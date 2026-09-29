@@ -16,6 +16,8 @@
 
 | 文档 | 用途 | 状态 |
 | --- | --- | --- |
+| [实施方案 (Implementation Plan)](design/implementation-plan.md) | Stage 2 方案评审终审实施方案、架构拓扑、状态机、错误表与测试矩阵 | 已批准 (APPROVED)，移交 Stage 3 Build |
+| [事件档案与连续日报](design/event-archive-and-daily-brief.md) | Stage 1 Think 产出方案 B 设计文档：事件档案、连续日报与热度榜 | 已批准 (APPROVED) |
 | [MVP 规格](design/mvp-spec.md) | 产品范围、流程、渠道、评分、证据、恢复、待定项、验收与决定追溯 | 当前汇总基线；实现和验收未开始 |
 | [领域语言](../CONTEXT.md) | Domain、Topic、Nomination、Evidence、Topic Card 等术语 | 当前术语表，不承担实现规格 |
 
