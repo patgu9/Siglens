@@ -1,0 +1,840 @@
+{
+  "evidence_version": "q1-investigation-v1",
+  "binary_version": "grok 1.0.52 (0920c8169e27)",
+  "binary_sha256": "c2caa9895dd763297a75e8fb6077e175d9c5304c53903e52cff8891a1384bbb9",
+  "macos": "27.0.1 (26A434)",
+  "python": "3.14.7",
+  "cases": [
+    {
+      "case": "registry-profile",
+      "exit": 65,
+      "all_request_count": 0,
+      "main_requests": [],
+      "stderr": "sandbox-exec: host must be * or localhost in network address\n\nBacktrace: \n<FIXTURE_ROOT>/registry-profile/guard.sb:4:26:\n\t(remote ip \"127.0.0.1:56237\")\n\n",
+      "sentinel_text": "Q1_SYNTHETIC_READ_SENTINEL\n",
+      "mcp_started": false,
+      "agents_marker_in_main": false,
+      "raw_capture_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "profile": {
+        "name": "siglens-q1",
+        "description": "X retrieval boundary probe",
+        "injectDefaultTools": false,
+        "discoverSkills": false,
+        "agentsMd": false,
+        "mcpInheritance": "none",
+        "toolConfig": {
+          "tools": [
+            {
+              "id": "GrokBuild:read_file"
+            }
+          ]
+        }
+      },
+      "guard": "(version 1)\n(allow default)\n(deny network*)\n(allow network-outbound (remote ip \"127.0.0.1:56237\"))\n(deny file-read* (subpath \"/Users\"))\n(allow file-read* (subpath \"<FIXTURE_ROOT>/registry-profile\") (literal \"<PINNED_BINARY>\"))\n(deny file-write*)\n(allow file-write* (subpath \"<FIXTURE_ROOT>/registry-profile\") (literal \"/dev/null\"))\n",
+      "controls": {
+        "profile_applied": true,
+        "seeded_context": false,
+        "exec_allowlist": false,
+        "backend_search_env": false,
+        "no_subagents_flag": true,
+        "disable_web_search_flag": true,
+        "upstream": "synthetic loopback; no real credentials"
+      }
+    },
+    {
+      "case": "registry-profile-2",
+      "exit": 0,
+      "all_request_count": 3,
+      "main_requests": [
+        {
+          "path": "/v1/chat/completions",
+          "model": "q1-fixture",
+          "tool_names": [],
+          "tool_messages": []
+        }
+      ],
+      "stderr": "",
+      "sentinel_text": "Q1_SYNTHETIC_READ_SENTINEL\n",
+      "mcp_started": false,
+      "agents_marker_in_main": false,
+      "raw_capture_sha256": "66de8b6a9d77a207b16d69bf4ea3ded5c15ec5a7b1c34952d73c330d6d02c1d3",
+      "profile": {
+        "name": "siglens-q1",
+        "description": "X retrieval boundary probe",
+        "injectDefaultTools": false,
+        "discoverSkills": false,
+        "agentsMd": false,
+        "mcpInheritance": "none",
+        "toolConfig": {
+          "tools": [
+            {
+              "id": "GrokBuild:read_file"
+            }
+          ]
+        }
+      },
+      "guard": "(version 1)\n(allow default)\n(deny network*)\n(allow network-outbound (remote ip \"localhost:56252\"))\n(deny file-read* (subpath \"/Users\"))\n(allow file-read* (subpath \"<FIXTURE_ROOT>/registry-profile-2\") (literal \"<PINNED_BINARY>\"))\n(deny file-write*)\n(allow file-write* (subpath \"<FIXTURE_ROOT>/registry-profile-2\") (literal \"/dev/null\"))\n",
+      "controls": {
+        "profile_applied": true,
+        "seeded_context": false,
+        "exec_allowlist": false,
+        "backend_search_env": false,
+        "no_subagents_flag": true,
+        "disable_web_search_flag": true,
+        "upstream": "synthetic loopback; no real credentials"
+      }
+    },
+    {
+      "case": "baseline-registry",
+      "exit": 0,
+      "all_request_count": 3,
+      "main_requests": [
+        {
+          "path": "/v1/chat/completions",
+          "model": "q1-fixture",
+          "tool_names": [
+            "run_terminal_command",
+            "read_file",
+            "search_replace",
+            "list_dir",
+            "grep",
+            "kill_command_or_subagent",
+            "todo_write",
+            "get_command_or_subagent_output",
+            "scheduler_create",
+            "scheduler_delete",
+            "scheduler_list",
+            "monitor",
+            "search_tool",
+            "use_tool",
+            "workflow",
+            "enter_plan_mode",
+            "exit_plan_mode",
+            "ask_user_question",
+            "send_feedback",
+            "image_gen",
+            "image_edit",
+            "image_to_video",
+            "reference_to_video",
+            "write"
+          ],
+          "tool_messages": []
+        }
+      ],
+      "stderr": "",
+      "sentinel_text": "Q1_SYNTHETIC_READ_SENTINEL\n",
+      "mcp_started": false,
+      "agents_marker_in_main": false,
+      "raw_capture_sha256": "8081455548e459e60b177f3d72338b34cd5805c588f731c397bf35defd34b825",
+      "profile": {
+        "name": "siglens-q1",
+        "description": "X retrieval boundary probe",
+        "injectDefaultTools": false,
+        "discoverSkills": false,
+        "agentsMd": false,
+        "mcpInheritance": "none",
+        "toolConfig": {
+          "tools": [
+            {
+              "id": "GrokBuild:read_file"
+            }
+          ]
+        }
+      },
+      "guard": "(version 1)\n(allow default)\n(deny network*)\n(allow network-outbound (remote ip \"localhost:56291\"))\n(deny file-read* (subpath \"/Users\"))\n(allow file-read* (subpath \"<FIXTURE_ROOT>/baseline-registry\") (literal \"<PINNED_BINARY>\"))\n(deny file-write*)\n(allow file-write* (subpath \"<FIXTURE_ROOT>/baseline-registry\") (literal \"/dev/null\"))\n",
+      "controls": {
+        "profile_applied": false,
+        "seeded_context": false,
+        "exec_allowlist": false,
+        "backend_search_env": false,
+        "no_subagents_flag": true,
+        "disable_web_search_flag": true,
+        "upstream": "synthetic loopback; no real credentials"
+      }
+    },
+    {
+      "case": "force-read-profile",
+      "exit": 0,
+      "all_request_count": 4,
+      "main_requests": [
+        {
+          "path": "/v1/chat/completions",
+          "model": "q1-fixture",
+          "tool_names": [],
+          "tool_messages": []
+        },
+        {
+          "path": "/v1/chat/completions",
+          "model": "q1-fixture",
+          "tool_names": [],
+          "tool_messages": [
+            {
+              "role": "tool",
+              "content": "Failed to parse arguments for tool `read_file`: Tool not found: read_file\n\nYour original arguments:\n{\"file_path\":\"<FIXTURE_ROOT>/force-read-profile/cwd/fixture.txt\"}",
+              "tool_call_id": "q1_call_1"
+            }
+          ]
+        }
+      ],
+      "stderr": "",
+      "sentinel_text": "Q1_SYNTHETIC_READ_SENTINEL\n",
+      "mcp_started": false,
+      "agents_marker_in_main": false,
+      "raw_capture_sha256": "98def05e36eca0cf69fcc411c968a385c12812ea929c81eccc92c920b91d0af5",
+      "profile": {
+        "name": "siglens-q1",
+        "description": "X retrieval boundary probe",
+        "injectDefaultTools": false,
+        "discoverSkills": false,
+        "agentsMd": false,
+        "mcpInheritance": "none",
+        "toolConfig": {
+          "tools": [
+            {
+              "id": "GrokBuild:read_file"
+            }
+          ]
+        }
+      },
+      "guard": "(version 1)\n(allow default)\n(deny network*)\n(allow network-outbound (remote ip \"localhost:56292\"))\n(deny file-read* (subpath \"/Users\"))\n(allow file-read* (subpath \"<FIXTURE_ROOT>/force-read-profile\") (literal \"<PINNED_BINARY>\"))\n(deny file-write*)\n(allow file-write* (subpath \"<FIXTURE_ROOT>/force-read-profile\") (literal \"/dev/null\"))\n",
+      "controls": {
+        "profile_applied": true,
+        "seeded_context": false,
+        "exec_allowlist": false,
+        "backend_search_env": false,
+        "no_subagents_flag": true,
+        "disable_web_search_flag": true,
+        "upstream": "synthetic loopback; no real credentials"
+      }
+    },
+    {
+      "case": "positive-read",
+      "exit": 0,
+      "all_request_count": 4,
+      "main_requests": [
+        {
+          "path": "/v1/chat/completions",
+          "model": "q1-fixture",
+          "tool_names": [
+            "run_terminal_command",
+            "read_file",
+            "search_replace",
+            "list_dir",
+            "grep",
+            "kill_command_or_subagent",
+            "todo_write",
+            "get_command_or_subagent_output",
+            "scheduler_create",
+            "scheduler_delete",
+            "scheduler_list",
+            "monitor",
+            "search_tool",
+            "use_tool",
+            "workflow",
+            "enter_plan_mode",
+            "exit_plan_mode",
+            "ask_user_question",
+            "send_feedback",
+            "image_gen",
+            "image_edit",
+            "image_to_video",
+            "reference_to_video",
+            "write"
+          ],
+          "tool_messages": []
+        },
+        {
+          "path": "/v1/chat/completions",
+          "model": "q1-fixture",
+          "tool_names": [
+            "run_terminal_command",
+            "read_file",
+            "search_replace",
+            "list_dir",
+            "grep",
+            "kill_command_or_subagent",
+            "todo_write",
+            "get_command_or_subagent_output",
+            "scheduler_create",
+            "scheduler_delete",
+            "scheduler_list",
+            "monitor",
+            "search_tool",
+            "use_tool",
+            "workflow",
+            "enter_plan_mode",
+            "exit_plan_mode",
+            "ask_user_question",
+            "send_feedback",
+            "image_gen",
+            "image_edit",
+            "image_to_video",
+            "reference_to_video",
+            "write"
+          ],
+          "tool_messages": [
+            {
+              "role": "tool",
+              "content": "1→Q1_SYNTHETIC_READ_SENTINEL\n",
+              "tool_call_id": "q1_call_1"
+            }
+          ]
+        }
+      ],
+      "stderr": "",
+      "sentinel_text": "Q1_SYNTHETIC_READ_SENTINEL\n",
+      "mcp_started": false,
+      "agents_marker_in_main": false,
+      "raw_capture_sha256": "0dcb5615482edea4c8d34514cf52e715c7415a68d93f425f4a49b4282a145d4d",
+      "profile": {
+        "name": "siglens-q1",
+        "description": "X retrieval boundary probe",
+        "injectDefaultTools": false,
+        "discoverSkills": false,
+        "agentsMd": false,
+        "mcpInheritance": "none",
+        "toolConfig": {
+          "tools": [
+            {
+              "id": "GrokBuild:read_file"
+            }
+          ]
+        }
+      },
+      "guard": "(version 1)\n(allow default)\n(deny network*)\n(allow network-outbound (remote ip \"localhost:56318\"))\n(deny file-read* (subpath \"/Users\"))\n(allow file-read* (subpath \"<FIXTURE_ROOT>/positive-read\") (literal \"<PINNED_BINARY>\"))\n(deny file-write*)\n(allow file-write* (subpath \"<FIXTURE_ROOT>/positive-read\") (literal \"/dev/null\"))\n",
+      "controls": {
+        "profile_applied": false,
+        "seeded_context": false,
+        "exec_allowlist": false,
+        "backend_search_env": false,
+        "no_subagents_flag": true,
+        "disable_web_search_flag": true,
+        "upstream": "synthetic loopback; no real credentials"
+      }
+    },
+    {
+      "case": "deny-read",
+      "exit": 0,
+      "all_request_count": 4,
+      "main_requests": [
+        {
+          "path": "/v1/chat/completions",
+          "model": "q1-fixture",
+          "tool_names": [],
+          "tool_messages": []
+        },
+        {
+          "path": "/v1/chat/completions",
+          "model": "q1-fixture",
+          "tool_names": [],
+          "tool_messages": [
+            {
+              "role": "tool",
+              "content": "Failed to parse arguments for tool `read_file`: Tool not found: read_file\n\nYour original arguments:\n{\"target_file\":\"<FIXTURE_ROOT>/deny-read/cwd/fixture.txt\"}",
+              "tool_call_id": "q1_call_1"
+            }
+          ]
+        }
+      ],
+      "stderr": "",
+      "sentinel_text": "Q1_SYNTHETIC_READ_SENTINEL\n",
+      "mcp_started": false,
+      "agents_marker_in_main": false,
+      "raw_capture_sha256": "182f1985f3f278b3e2d4948a31f509ea01ac0bccbc30e92a81f352e019fc6469",
+      "profile": {
+        "name": "siglens-q1",
+        "description": "X retrieval boundary probe",
+        "injectDefaultTools": false,
+        "discoverSkills": false,
+        "agentsMd": false,
+        "mcpInheritance": "none",
+        "toolConfig": {
+          "tools": [
+            {
+              "id": "GrokBuild:read_file"
+            }
+          ]
+        }
+      },
+      "guard": "(version 1)\n(allow default)\n(deny network*)\n(allow network-outbound (remote ip \"localhost:56320\"))\n(deny file-read* (subpath \"/Users\"))\n(allow file-read* (subpath \"<FIXTURE_ROOT>/deny-read\") (literal \"<PINNED_BINARY>\"))\n(deny file-write*)\n(allow file-write* (subpath \"<FIXTURE_ROOT>/deny-read\") (literal \"/dev/null\"))\n",
+      "controls": {
+        "profile_applied": true,
+        "seeded_context": false,
+        "exec_allowlist": false,
+        "backend_search_env": false,
+        "no_subagents_flag": true,
+        "disable_web_search_flag": true,
+        "upstream": "synthetic loopback; no real credentials"
+      }
+    },
+    {
+      "case": "deny-shell",
+      "exit": 0,
+      "all_request_count": 4,
+      "main_requests": [
+        {
+          "path": "/v1/chat/completions",
+          "model": "q1-fixture",
+          "tool_names": [],
+          "tool_messages": []
+        },
+        {
+          "path": "/v1/chat/completions",
+          "model": "q1-fixture",
+          "tool_names": [],
+          "tool_messages": [
+            {
+              "role": "tool",
+              "content": "Failed to parse arguments for tool `run_terminal_command`: Tool not found: run_terminal_command\n\nYour original arguments:\n{\"command\":\"/usr/bin/printf Q1_SHELL_EXECUTED\",\"description\":\"Controlled synthetic probe\",\"block_until_ms\":1000}",
+              "tool_call_id": "q1_call_1"
+            }
+          ]
+        }
+      ],
+      "stderr": "",
+      "sentinel_text": "Q1_SYNTHETIC_READ_SENTINEL\n",
+      "mcp_started": false,
+      "agents_marker_in_main": false,
+      "raw_capture_sha256": "26c39b6da5a73af731dcb2eb588ba56a50a41acf65fab1b24e80be874c292fc1",
+      "profile": {
+        "name": "siglens-q1",
+        "description": "X retrieval boundary probe",
+        "injectDefaultTools": false,
+        "discoverSkills": false,
+        "agentsMd": false,
+        "mcpInheritance": "none",
+        "toolConfig": {
+          "tools": [
+            {
+              "id": "GrokBuild:read_file"
+            }
+          ]
+        }
+      },
+      "guard": "(version 1)\n(allow default)\n(deny network*)\n(allow network-outbound (remote ip \"localhost:56319\"))\n(deny file-read* (subpath \"/Users\"))\n(allow file-read* (subpath \"<FIXTURE_ROOT>/deny-shell\") (literal \"<PINNED_BINARY>\"))\n(deny file-write*)\n(allow file-write* (subpath \"<FIXTURE_ROOT>/deny-shell\") (literal \"/dev/null\"))\n",
+      "controls": {
+        "profile_applied": true,
+        "seeded_context": false,
+        "exec_allowlist": false,
+        "backend_search_env": false,
+        "no_subagents_flag": true,
+        "disable_web_search_flag": true,
+        "upstream": "synthetic loopback; no real credentials"
+      }
+    },
+    {
+      "case": "deny-write",
+      "exit": 0,
+      "all_request_count": 4,
+      "main_requests": [
+        {
+          "path": "/v1/chat/completions",
+          "model": "q1-fixture",
+          "tool_names": [],
+          "tool_messages": []
+        },
+        {
+          "path": "/v1/chat/completions",
+          "model": "q1-fixture",
+          "tool_names": [],
+          "tool_messages": [
+            {
+              "role": "tool",
+              "content": "Failed to parse arguments for tool `write`: Tool not found: write\n\nYour original arguments:\n{\"file_path\":\"<FIXTURE_ROOT>/deny-write/cwd/fixture.txt\",\"content\":\"Q1_WRITE_EXECUTED\"}",
+              "tool_call_id": "q1_call_1"
+            }
+          ]
+        }
+      ],
+      "stderr": "",
+      "sentinel_text": "Q1_SYNTHETIC_READ_SENTINEL\n",
+      "mcp_started": false,
+      "agents_marker_in_main": false,
+      "raw_capture_sha256": "b7473460bd3eacd4ded755cbaaf4cf8e2c2f3d35d121bfd8cd73fa7d8c3116d4",
+      "profile": {
+        "name": "siglens-q1",
+        "description": "X retrieval boundary probe",
+        "injectDefaultTools": false,
+        "discoverSkills": false,
+        "agentsMd": false,
+        "mcpInheritance": "none",
+        "toolConfig": {
+          "tools": [
+            {
+              "id": "GrokBuild:read_file"
+            }
+          ]
+        }
+      },
+      "guard": "(version 1)\n(allow default)\n(deny network*)\n(allow network-outbound (remote ip \"localhost:56317\"))\n(deny file-read* (subpath \"/Users\"))\n(allow file-read* (subpath \"<FIXTURE_ROOT>/deny-write\") (literal \"<PINNED_BINARY>\"))\n(deny file-write*)\n(allow file-write* (subpath \"<FIXTURE_ROOT>/deny-write\") (literal \"/dev/null\"))\n",
+      "controls": {
+        "profile_applied": true,
+        "seeded_context": false,
+        "exec_allowlist": false,
+        "backend_search_env": false,
+        "no_subagents_flag": true,
+        "disable_web_search_flag": true,
+        "upstream": "synthetic loopback; no real credentials"
+      }
+    },
+    {
+      "case": "deny-search",
+      "exit": 0,
+      "all_request_count": 4,
+      "main_requests": [
+        {
+          "path": "/v1/chat/completions",
+          "model": "q1-fixture",
+          "tool_names": [],
+          "tool_messages": []
+        },
+        {
+          "path": "/v1/chat/completions",
+          "model": "q1-fixture",
+          "tool_names": [],
+          "tool_messages": [
+            {
+              "role": "tool",
+              "content": "Failed to parse arguments for tool `search_tool`: Tool not found: search_tool\n\nYour original arguments:\n{\"query\":\"fixture\"}",
+              "tool_call_id": "q1_call_1"
+            }
+          ]
+        }
+      ],
+      "stderr": "",
+      "sentinel_text": "Q1_SYNTHETIC_READ_SENTINEL\n",
+      "mcp_started": false,
+      "agents_marker_in_main": false,
+      "raw_capture_sha256": "d0fac0ad4fae4a0257d0f0901076691de656f67d79fb7be52f93546c6fefc285",
+      "profile": {
+        "name": "siglens-q1",
+        "description": "X retrieval boundary probe",
+        "injectDefaultTools": false,
+        "discoverSkills": false,
+        "agentsMd": false,
+        "mcpInheritance": "none",
+        "toolConfig": {
+          "tools": [
+            {
+              "id": "GrokBuild:read_file"
+            }
+          ]
+        }
+      },
+      "guard": "(version 1)\n(allow default)\n(deny network*)\n(allow network-outbound (remote ip \"localhost:56378\"))\n(deny file-read* (subpath \"/Users\"))\n(allow file-read* (subpath \"<FIXTURE_ROOT>/deny-search\") (literal \"<PINNED_BINARY>\"))\n(deny file-write*)\n(allow file-write* (subpath \"<FIXTURE_ROOT>/deny-search\") (literal \"/dev/null\"))\n",
+      "controls": {
+        "profile_applied": true,
+        "seeded_context": false,
+        "exec_allowlist": false,
+        "backend_search_env": false,
+        "no_subagents_flag": true,
+        "disable_web_search_flag": true,
+        "upstream": "synthetic loopback; no real credentials"
+      }
+    },
+    {
+      "case": "deny-use",
+      "exit": 0,
+      "all_request_count": 4,
+      "main_requests": [
+        {
+          "path": "/v1/chat/completions",
+          "model": "q1-fixture",
+          "tool_names": [],
+          "tool_messages": []
+        },
+        {
+          "path": "/v1/chat/completions",
+          "model": "q1-fixture",
+          "tool_names": [],
+          "tool_messages": [
+            {
+              "role": "tool",
+              "content": "Failed to parse arguments for tool `use_tool`: Tool not found: use_tool\n\nYour original arguments:\n{\"tool_name\":\"read_file\",\"arguments\":{\"target_file\":\"<FIXTURE_ROOT>/deny-use/cwd/fixture.txt\"}}",
+              "tool_call_id": "q1_call_1"
+            }
+          ]
+        }
+      ],
+      "stderr": "",
+      "sentinel_text": "Q1_SYNTHETIC_READ_SENTINEL\n",
+      "mcp_started": false,
+      "agents_marker_in_main": false,
+      "raw_capture_sha256": "433d4b56dbc2e99c01eef8a0b1db30615996e167014ce606d5f1e071beaae531",
+      "profile": {
+        "name": "siglens-q1",
+        "description": "X retrieval boundary probe",
+        "injectDefaultTools": false,
+        "discoverSkills": false,
+        "agentsMd": false,
+        "mcpInheritance": "none",
+        "toolConfig": {
+          "tools": [
+            {
+              "id": "GrokBuild:read_file"
+            }
+          ]
+        }
+      },
+      "guard": "(version 1)\n(allow default)\n(deny network*)\n(allow network-outbound (remote ip \"localhost:56380\"))\n(deny file-read* (subpath \"/Users\"))\n(allow file-read* (subpath \"<FIXTURE_ROOT>/deny-use\") (literal \"<PINNED_BINARY>\"))\n(deny file-write*)\n(allow file-write* (subpath \"<FIXTURE_ROOT>/deny-use\") (literal \"/dev/null\"))\n",
+      "controls": {
+        "profile_applied": true,
+        "seeded_context": false,
+        "exec_allowlist": false,
+        "backend_search_env": false,
+        "no_subagents_flag": true,
+        "disable_web_search_flag": true,
+        "upstream": "synthetic loopback; no real credentials"
+      }
+    },
+    {
+      "case": "hosted-x-fixture",
+      "exit": 0,
+      "all_request_count": 4,
+      "main_requests": [
+        {
+          "path": "/v1/chat/completions",
+          "model": "q1-fixture",
+          "tool_names": [],
+          "tool_messages": []
+        },
+        {
+          "path": "/v1/chat/completions",
+          "model": "q1-fixture",
+          "tool_names": [],
+          "tool_messages": [
+            {
+              "role": "tool",
+              "content": "Failed to parse arguments for tool `x_keyword_search`: Tool not found: x_keyword_search\n\nYour original arguments:\n{\"query\":\"fixture\",\"limit\":1,\"mode\":\"Latest\"}",
+              "tool_call_id": "q1_call_1"
+            }
+          ]
+        }
+      ],
+      "stderr": "",
+      "sentinel_text": "Q1_SYNTHETIC_READ_SENTINEL\n",
+      "mcp_started": false,
+      "agents_marker_in_main": false,
+      "raw_capture_sha256": "34f68ef1b8b713aaed4ad7706198bf7cf7a8c83ea79aa1a74f251d8c3cdd55cc",
+      "profile": {
+        "name": "siglens-q1",
+        "description": "X retrieval boundary probe",
+        "injectDefaultTools": false,
+        "discoverSkills": false,
+        "agentsMd": false,
+        "mcpInheritance": "none",
+        "toolConfig": {
+          "tools": [
+            {
+              "id": "GrokBuild:read_file"
+            }
+          ]
+        }
+      },
+      "guard": "(version 1)\n(allow default)\n(deny network*)\n(allow network-outbound (remote ip \"localhost:56379\"))\n(deny file-read* (subpath \"/Users\"))\n(allow file-read* (subpath \"<FIXTURE_ROOT>/hosted-x-fixture\") (literal \"<PINNED_BINARY>\"))\n(deny file-write*)\n(allow file-write* (subpath \"<FIXTURE_ROOT>/hosted-x-fixture\") (literal \"/dev/null\"))\n",
+      "controls": {
+        "profile_applied": true,
+        "seeded_context": false,
+        "exec_allowlist": false,
+        "backend_search_env": true,
+        "no_subagents_flag": true,
+        "disable_web_search_flag": true,
+        "upstream": "synthetic loopback; no real credentials"
+      }
+    },
+    {
+      "case": "context-control",
+      "exit": 0,
+      "all_request_count": 3,
+      "main_requests": [
+        {
+          "path": "/v1/chat/completions",
+          "model": "q1-fixture",
+          "tool_names": [
+            "run_terminal_command",
+            "read_file",
+            "search_replace",
+            "list_dir",
+            "grep",
+            "kill_command_or_subagent",
+            "todo_write",
+            "get_command_or_subagent_output",
+            "scheduler_create",
+            "scheduler_delete",
+            "scheduler_list",
+            "monitor",
+            "search_tool",
+            "use_tool",
+            "workflow",
+            "enter_plan_mode",
+            "exit_plan_mode",
+            "ask_user_question",
+            "send_feedback",
+            "image_gen",
+            "image_edit",
+            "image_to_video",
+            "reference_to_video",
+            "write"
+          ],
+          "tool_messages": []
+        }
+      ],
+      "stderr": "",
+      "sentinel_text": "Q1_SYNTHETIC_READ_SENTINEL\n",
+      "mcp_started": true,
+      "agents_marker_in_main": false,
+      "raw_capture_sha256": "49bdc2268a719e017c8366e795192e5eff92b61355c3a74b8f2470765fa00062",
+      "profile": {
+        "name": "siglens-q1",
+        "description": "X retrieval boundary probe",
+        "injectDefaultTools": false,
+        "discoverSkills": false,
+        "agentsMd": false,
+        "mcpInheritance": "none",
+        "toolConfig": {
+          "tools": [
+            {
+              "id": "GrokBuild:read_file"
+            }
+          ]
+        }
+      },
+      "guard": "(version 1)\n(allow default)\n(deny network*)\n(allow network-outbound (remote ip \"localhost:56496\"))\n(deny file-read* (subpath \"/Users\"))\n(allow file-read* (subpath \"<FIXTURE_ROOT>/context-control\") (literal \"<PINNED_BINARY>\"))\n(deny file-write*)\n(allow file-write* (subpath \"<FIXTURE_ROOT>/context-control\") (literal \"/dev/null\"))\n",
+      "controls": {
+        "profile_applied": false,
+        "seeded_context": true,
+        "exec_allowlist": false,
+        "backend_search_env": false,
+        "no_subagents_flag": true,
+        "disable_web_search_flag": true,
+        "upstream": "synthetic loopback; no real credentials"
+      }
+    },
+    {
+      "case": "context-profile",
+      "exit": 0,
+      "all_request_count": 3,
+      "main_requests": [
+        {
+          "path": "/v1/chat/completions",
+          "model": "q1-fixture",
+          "tool_names": [],
+          "tool_messages": []
+        }
+      ],
+      "stderr": "",
+      "sentinel_text": "Q1_SYNTHETIC_READ_SENTINEL\n",
+      "mcp_started": true,
+      "agents_marker_in_main": false,
+      "raw_capture_sha256": "01af850cf8c29a412102ca2de51dd2c4a89a204df9afd8792b08cfdb186d1cb9",
+      "profile": {
+        "name": "siglens-q1",
+        "description": "X retrieval boundary probe",
+        "injectDefaultTools": false,
+        "discoverSkills": false,
+        "agentsMd": false,
+        "mcpInheritance": "none",
+        "toolConfig": {
+          "tools": [
+            {
+              "id": "GrokBuild:read_file"
+            }
+          ]
+        }
+      },
+      "guard": "(version 1)\n(allow default)\n(deny network*)\n(allow network-outbound (remote ip \"localhost:56495\"))\n(deny file-read* (subpath \"/Users\"))\n(allow file-read* (subpath \"<FIXTURE_ROOT>/context-profile\") (literal \"<PINNED_BINARY>\"))\n(deny file-write*)\n(allow file-write* (subpath \"<FIXTURE_ROOT>/context-profile\") (literal \"/dev/null\"))\n",
+      "controls": {
+        "profile_applied": true,
+        "seeded_context": true,
+        "exec_allowlist": false,
+        "backend_search_env": false,
+        "no_subagents_flag": true,
+        "disable_web_search_flag": true,
+        "upstream": "synthetic loopback; no real credentials"
+      }
+    },
+    {
+      "case": "context-profile-os-exec",
+      "exit": 0,
+      "all_request_count": 3,
+      "main_requests": [
+        {
+          "path": "/v1/chat/completions",
+          "model": "q1-fixture",
+          "tool_names": [],
+          "tool_messages": []
+        }
+      ],
+      "stderr": "",
+      "sentinel_text": "Q1_SYNTHETIC_READ_SENTINEL\n",
+      "mcp_started": false,
+      "agents_marker_in_main": false,
+      "raw_capture_sha256": "b179edc5e7408e7777fa4d54dd3e1e3da90db1b0bec0ad733d74970c2efe1c9e",
+      "profile": {
+        "name": "siglens-q1",
+        "description": "X retrieval boundary probe",
+        "injectDefaultTools": false,
+        "discoverSkills": false,
+        "agentsMd": false,
+        "mcpInheritance": "none",
+        "toolConfig": {
+          "tools": [
+            {
+              "id": "GrokBuild:read_file"
+            }
+          ]
+        }
+      },
+      "guard": "(version 1)\n(allow default)\n(deny network*)\n(allow network-outbound (remote ip \"localhost:56518\"))\n(deny file-read* (subpath \"/Users\"))\n(allow file-read* (subpath \"<FIXTURE_ROOT>/context-profile-os-exec\") (literal \"<PINNED_BINARY>\"))\n(deny file-write*)\n(allow file-write* (subpath \"<FIXTURE_ROOT>/context-profile-os-exec\") (literal \"/dev/null\"))\n(deny process-exec)\n(allow process-exec (literal \"<PINNED_BINARY>\"))\n",
+      "controls": {
+        "profile_applied": true,
+        "seeded_context": true,
+        "exec_allowlist": true,
+        "backend_search_env": false,
+        "no_subagents_flag": true,
+        "disable_web_search_flag": true,
+        "upstream": "synthetic loopback; no real credentials"
+      }
+    }
+  ],
+  "os_guard": {
+    "allowed-read": {
+      "exit": 0,
+      "stdout": "Q1_INSIDE",
+      "stderr": ""
+    },
+    "denied-read": {
+      "exit": 1,
+      "stdout": "",
+      "stderr": "cat: <FIXTURE_ROOT>/outside-fixture.txt: Operation not permitted\n"
+    },
+    "denied-write": {
+      "exit": 1,
+      "stdout": "",
+      "stderr": "touch: <FIXTURE_ROOT>/forbidden-write: Operation not permitted\n"
+    },
+    "allowed-loopback": {
+      "exit": 0,
+      "stdout": "",
+      "stderr": "Connection to 127.0.0.1 port 56408 [tcp/*] succeeded!\n"
+    },
+    "denied-other-loopback": {
+      "exit": 1,
+      "stdout": "",
+      "stderr": "nc: connectx to 127.0.0.1 port 56409 (tcp) failed: Operation not permitted\n"
+    },
+    "outside_write_exists": false
+  },
+  "exec_guard_direct_check": {
+    "command": "sandbox-exec -f <context-profile-os-exec>/guard.sb /usr/bin/touch <context-profile-os-exec>/direct-exec-marker",
+    "exit": 71,
+    "stderr": "sandbox-exec: execvp() of '/usr/bin/touch' failed: Operation not permitted\n",
+    "marker_exists": false
+  },
+  "limits": [
+    "Loopback server substitutes only upstream responses; the Grok registry/dispatcher and OS guard are real.",
+    "No real credentials, authenticated X search, external source content or research publication was used.",
+    "No complete vendor system prompt or unrelated user context is included; these are selected observations from the captured request bodies."
+  ],
+  "published_harness_sha256": "4c2db480386f1cdf7627cd6d8fb2b457688d09331c638c8497babd5e673f5416"
+}
